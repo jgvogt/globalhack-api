@@ -190,6 +190,26 @@ INSERT INTO tags (ID, TYPE, NAME) VALUES (1184, 'Language', 'Xhosa');
 INSERT INTO tags (ID, TYPE, NAME) VALUES (1185, 'Language', 'Yiddish');
 INSERT INTO tags (ID, TYPE, NAME) VALUES (1186, 'Language', 'Zulu');
 
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2000, 'Skill', 'Drivers license');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2001, 'Skill', 'Bank account');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2002, 'Skill', 'VISA');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2003, 'Skill', 'Immigration documents');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2004, 'Skill', 'Renew VISA');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2005, 'Skill', 'Cell phone service');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2006, 'Skill', 'Apartment');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2007, 'Skill', 'Language assistance for low language ');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2008, 'Skill', 'Navigate resources in community');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2009, 'Skill', 'Government offices');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2010, 'Skill', 'Food stamps');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2011, 'Skill', 'Involved at kids schools');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2012, 'Skill', 'Professional networking');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2013, 'Skill', 'Liability of transportation');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2014, 'Skill', 'Healthcare');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2015, 'Skill', 'Education');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2016, 'Skill', 'Employment ');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2017, 'Skill', 'Navigation assistance');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2018, 'Skill', 'Bus route');
+INSERT INTO tags (ID, TYPE, NAME) VALUES (2019, 'Skill', 'How to read a phone bill');
 
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (1, 1043);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (1, 1044);
