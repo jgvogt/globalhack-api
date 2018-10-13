@@ -224,12 +224,17 @@ INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (1, 1046);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (1, 1003);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (1, 2000);
 
+INSERT INTO ambassador_reviews (AMBASSADOR_ID, RATING, REVIEW) VALUES (1, 2, 'Mike was very helpful in assisting with getting my Drivers license.  He made the process very easy.');
+
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (2, 1022);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (2, 1056);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (2, 1085);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (2, 2000);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (2, 2015);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (2, 2006);
+
+INSERT INTO ambassador_reviews (AMBASSADOR_ID, RATING, REVIEW) VALUES (2, 2, 'Phillip was able to help me translate to my grandmother who speaks Latin.');
+INSERT INTO ambassador_reviews (AMBASSADOR_ID, RATING, REVIEW) VALUES (2, 3, 'Very helpful taking my cousin through the financial aid process at my local community college');
 
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (3, 1063);
 INSERT INTO ambassador_tags (AMBASSADOR_ID, TAG_ID) VALUES (3, 1064);
