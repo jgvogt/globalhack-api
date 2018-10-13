@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 @RequestMapping("/api/tags")
 public class TagController {
+
     @Autowired
     private TagRepository tagRepository;
 
     @GetMapping
     public List<Tag> find(@RequestParam String name) {
-        return tagRepository.findByNameContaining(name);
+        return tagRepository.findByNameIgnoreCaseContaining(name);
     }
 }
