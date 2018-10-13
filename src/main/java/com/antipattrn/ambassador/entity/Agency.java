@@ -75,7 +75,9 @@ public class Agency {
         return postalCode;
     }
 
-    public String getContactInformation() {
-        return contactInformation;
+    public String getContactInformation() { return contactInformation; }
+
+    public Set<Tag> getTags() {
+        return tags;
     }
 }
