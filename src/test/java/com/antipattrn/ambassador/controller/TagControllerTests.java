@@ -23,6 +23,19 @@ public class TagControllerTests {
     @InjectMocks
     private TagController tagController;
 
+
+    @Test
+    public void findAll() {
+        Tag tag = new Tag("1", "Language", "English-England");
+        when(tagRepository.findAll()).thenReturn(Arrays.asList(tag));
+
+        List<Tag> response = tagController.findAll();
+
+        assertThat(response, is(notNullValue()));
+        assertThat(response.size(), is(1));
+        assertThat(response, hasItem(tag));
+    }
+
     @Test
     public void findTagsByName() {
         Tag tag = new Tag("1", "Language", "English-England");

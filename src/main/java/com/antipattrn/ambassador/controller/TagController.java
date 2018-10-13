@@ -14,6 +14,11 @@ public class TagController {
     @Autowired
     private TagRepository tagRepository;
 
+    @GetMapping
+    public List<Tag> findAll() {
+        return tagRepository.findAll();
+    }
+
     @GetMapping("/name")
     public List<Tag> findByName(@RequestParam String name) {
         return tagRepository.findByNameIgnoreCaseContaining(name);
