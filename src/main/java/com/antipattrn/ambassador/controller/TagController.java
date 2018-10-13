@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/api/tags")
 public class TagController {
     @Autowired
     private TagRepository tagRepository;
