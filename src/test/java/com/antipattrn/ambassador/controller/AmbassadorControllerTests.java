@@ -18,7 +18,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.antipattrn.ambassador.controller.AmbassadorController;
 import com.antipattrn.ambassador.entity.Ambassador;
 import com.antipattrn.ambassador.repository.AmbassadorRepository;
 
@@ -32,8 +31,8 @@ public class AmbassadorControllerTests {
     private AmbassadorController ambassadorController;
 
     @Test
-    public void findCoursesCallsFindAll() {
-        Ambassador ambassador = new Ambassador("1", "Course 1", "Cource 1 Description");
+    public void findAmbassadorsCallsFindAll() {
+        Ambassador ambassador = new Ambassador("Bob", "Smith", "63139");
         when(ambassadorRepository.findAll()).thenReturn(Arrays.asList(ambassador));
 
         List<Ambassador> response = ambassadorController.find();
@@ -44,8 +43,8 @@ public class AmbassadorControllerTests {
     }
 
     @Test
-    public void createCourseCallsSave() {
-        Ambassador ambassador = new Ambassador("Course 1", "Cource 1 Description");
+    public void createAmbassadorCallsSave() {
+        Ambassador ambassador = new Ambassador("Bob", "Smith", "63139");
         when(ambassadorRepository.save(any(Ambassador.class))).thenReturn(ambassador);
 
         Ambassador response = ambassadorController.create(ambassador);
@@ -55,8 +54,8 @@ public class AmbassadorControllerTests {
     }
 
     @Test
-    public void updateCourseCallsSave() {
-        Ambassador ambassador = new Ambassador("Course 1", "Cource 1 Description");
+    public void updateAmbassadorCallsSave() {
+        Ambassador ambassador = new Ambassador("Robert", "Smith", "63139");
         when(ambassadorRepository.save(any(Ambassador.class))).thenReturn(ambassador);
 
         Ambassador response = ambassadorController.update("1", ambassador);
@@ -66,7 +65,7 @@ public class AmbassadorControllerTests {
     }
 
     @Test
-    public void deleteCourseCallsDelete() {
+    public void deleteAmbassadorCallsDelete() {
         doNothing().when(ambassadorRepository).delete("1");
 
         ambassadorController.delete("1");
