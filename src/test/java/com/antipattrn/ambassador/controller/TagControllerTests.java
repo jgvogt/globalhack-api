@@ -24,11 +24,23 @@ public class TagControllerTests {
     private TagController tagController;
 
     @Test
-    public void findTags() {
+    public void findTagsByName() {
         Tag tag = new Tag("1", "Language", "English-England");
         when(tagRepository.findByNameIgnoreCaseContaining("English")).thenReturn(Arrays.asList(tag));
 
-        List<Tag> response = tagController.find("English");
+        List<Tag> response = tagController.findByName("English");
+
+        assertThat(response, is(notNullValue()));
+        assertThat(response.size(), is(1));
+        assertThat(response, hasItem(tag));
+    }
+
+    @Test
+    public void findTagsByType() {
+        Tag tag = new Tag("1", "Language", "Yiddish");
+        when(tagRepository.findByTypeIgnoreCaseContaining("language")).thenReturn(Arrays.asList(tag));
+
+        List<Tag> response = tagController.findByType("language");
 
         assertThat(response, is(notNullValue()));
         assertThat(response.size(), is(1));

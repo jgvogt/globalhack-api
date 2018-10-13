@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TagRepository extends JpaRepository<Tag, String> {
     List<Tag> findByNameIgnoreCaseContaining(String name);
+    List<Tag> findByTypeIgnoreCaseContaining(String type);
 }

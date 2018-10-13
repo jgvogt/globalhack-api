@@ -15,7 +15,12 @@ public class TagController {
     private TagRepository tagRepository;
 
     @GetMapping
-    public List<Tag> find(@RequestParam String name) {
+    public List<Tag> findByName(@RequestParam String name) {
         return tagRepository.findByNameIgnoreCaseContaining(name);
+    }
+
+    @GetMapping
+    public List<Tag> findByType(@RequestParam String type) {
+        return tagRepository.findByTypeIgnoreCaseContaining(type);
     }
 }
