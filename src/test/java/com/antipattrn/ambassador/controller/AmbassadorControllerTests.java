@@ -35,7 +35,7 @@ public class AmbassadorControllerTests {
         Ambassador ambassador = new Ambassador("Bob", "Smith", "63139");
         when(ambassadorRepository.findAll()).thenReturn(Arrays.asList(ambassador));
 
-        List<Ambassador> response = ambassadorController.find();
+        List<Ambassador> response = ambassadorController.find(null);
 
         assertThat(response, is(notNullValue()));
         assertThat(response.size(), is(1));
