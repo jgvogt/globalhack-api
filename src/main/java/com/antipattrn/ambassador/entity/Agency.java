@@ -27,7 +27,7 @@ public class Agency {
     private String name;
 
     @Column(name = "DESCRIPTION")
-    private String lastName;
+    private String description;
 
     @Column(name = "POSTALCODE")
     private String postalCode;
@@ -49,14 +49,14 @@ public class Agency {
         //No Arg Constructor
     }
 
-    public Agency(String id, String name, String lastName, String postalCode, String contactInformation) {
-        this(name, lastName, postalCode, contactInformation);
+    public Agency(String id, String name, String description, String postalCode, String contactInformation) {
+        this(name, description, postalCode, contactInformation);
         this.id = id;
     }
 
-    public Agency(String name, String lastName, String postalCode, String contactInformation) {
+    public Agency(String name, String description, String postalCode, String contactInformation) {
         this.name = name;
-        this.lastName = lastName;
+        this.description = description;
         this.postalCode = postalCode;
         this.contactInformation = contactInformation;
     }
@@ -69,9 +69,7 @@ public class Agency {
         return name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
+    public String getDescription() { return description; }
 
     public String getPostalCode() {
         return postalCode;
