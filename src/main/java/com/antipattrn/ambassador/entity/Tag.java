@@ -34,6 +34,14 @@ public class Tag {
             mappedBy = "tags")
     private Set<Ambassador> ambassadors = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "tags")
+    private Set<Agency> agencies = new HashSet<>();
+
     public Tag() {
         //No Arg Constructor
     }
