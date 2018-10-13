@@ -1,9 +1,24 @@
 package com.antipattrn.ambassador.entity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "ambassadors")
@@ -60,6 +75,9 @@ public class Ambassador {
             inverseJoinColumns = { @JoinColumn(name = "tag_id") })
     private Set<Tag> tags = new HashSet<>();
 
+    @OneToMany(mappedBy="ambassador")
+    private Set<AmbassadorReview> reviews = new HashSet<>();
+
     public Ambassador() {
         //No Arg Constructor
     }
@@ -95,21 +113,44 @@ public class Ambassador {
         return postalCode;
     }
 
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
     public Gender getGender() {
         return gender;
     }
+
     public Status getStatus() {
         return status;
     }
+
     public String getPhone() {
         return phone;
     }
+
     public String getEmail() {
         return email;
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public BigDecimal getOverallRating() {
+
+        BigDecimal rating = BigDecimal.ZERO;
+
+        if(reviews != null && !reviews.isEmpty()) {
+
+            for (AmbassadorReview review : reviews) {
+                rating = rating.add(BigDecimal.valueOf(review.getRating()));
+            }
+
+            rating = rating.divide(BigDecimal.valueOf(reviews.size())).setScale(1, RoundingMode.UP);
+        }
+
+        return rating;
+
+    }
+
+    public Set<AmbassadorReview> getReviews() {
+        return reviews;
+    }
 }

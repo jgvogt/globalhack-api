@@ -35,6 +35,11 @@ public class AmbassadorController {
                         .findByCriteria(new AmbassadorSearchCriteria(tags, postalCode, firstName, lastName)));
     }
 
+    @GetMapping("/{ambassadorId}")
+    public Ambassador findOne(@PathVariable String ambassadorId) {
+        return ambassadorRepository.findOne(ambassadorId);
+    }
+
     @PostMapping
     public Ambassador create(@RequestBody Ambassador ambassador) {
         return ambassadorRepository.save(new Ambassador(ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode(), ambassador.getGender(), ambassador.getStatus(), ambassador.getPhone(), ambassador.getEmail()));
