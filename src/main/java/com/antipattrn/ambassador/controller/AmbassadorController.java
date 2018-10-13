@@ -34,12 +34,12 @@ public class AmbassadorController {
 
     @PostMapping
     public Ambassador create(@RequestBody Ambassador ambassador) {
-        return ambassadorRepository.save(new Ambassador(ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode()));
+        return ambassadorRepository.save(new Ambassador(ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode(), ambassador.getGender(), ambassador.getStatus(), ambassador.getPhone(), ambassador.getEmail()));
     }
 
     @PutMapping("/{ambassadorId}")
     public Ambassador update(@PathVariable String ambassadorId, @RequestBody Ambassador ambassador) {
-        return ambassadorRepository.save(new Ambassador(ambassadorId, ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode()));
+        return ambassadorRepository.save(new Ambassador(ambassadorId, ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode(), ambassador.getGender(), ambassador.getStatus(), ambassador.getPhone(), ambassador.getEmail()));
     }
 
     @DeleteMapping("/{ambassadorId}")
