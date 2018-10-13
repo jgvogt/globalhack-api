@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.globalhack.api</groupId>
-	<artifactId>globalhack-api</artifactId>
+	<groupId>com.antipattrn.ambassador</groupId>
+	<artifactId>ambassador-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>globalhack-api</name>
-	<description>Example project of Rest Service with JPA</description>
+	<name>ambassador-api</name>
+	<description>Ambassador Rest Api</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
