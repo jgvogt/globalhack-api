@@ -1,4 +1,4 @@
-package com.antipattrn.ambassador;
+package com.antipattrn.ambassador.controller;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
@@ -17,6 +17,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.antipattrn.ambassador.controller.AmbassadorController;
+import com.antipattrn.ambassador.entity.Ambassador;
+import com.antipattrn.ambassador.repository.AmbassadorRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AmbassadorControllerTests {

@@ -1,4 +1,4 @@
-package com.antipattrn.ambassador;
+package com.antipattrn.ambassador.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
