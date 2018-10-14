@@ -31,11 +31,11 @@ public class AmbassadorSearchSpecificaton {
                 }
 
                 if (searchCriteria.getFirstName() != null) {
-                    predicates.add(cb.equal(root.get("firstName"), searchCriteria.getFirstName()));
+                    predicates.add(cb.equal(cb.lower(root.get("firstName")), searchCriteria.getFirstName().toLowerCase()));
                 }
 
                 if (searchCriteria.getLastName() != null) {
-                    predicates.add(cb.equal(root.get("lastName"), searchCriteria.getLastName()));
+                    predicates.add(cb.equal(cb.lower(root.get("lastName")), searchCriteria.getLastName().toLowerCase()));
                 }
 
                 return cb.and(predicates.toArray(new Predicate[predicates.size()]));
