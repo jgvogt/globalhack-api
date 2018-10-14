@@ -45,7 +45,7 @@ public class AmbassadorController {
 
     @PostMapping
     public Ambassador create(@RequestBody Ambassador ambassador) {
-        return ambassadorRepository.save(new Ambassador(ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode(), ambassador.getGender(), ambassador.getStatus(), ambassador.getPhone(), ambassador.getEmail()));
+        return ambassadorRepository.save(new Ambassador(ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode(), ambassador.getGender(), Ambassador.Status.ACTIVE, ambassador.getPhone(), ambassador.getEmail()));
     }
 
     @PutMapping("/{ambassadorId}")

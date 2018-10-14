@@ -24,13 +24,13 @@ import javax.persistence.Table;
 @Table(name = "ambassadors")
 public class Ambassador {
 
-    enum Status {
+    public enum Status {
         ACTIVE,
         INACTIVE,
         PAUSED
     }
 
-    enum Gender {
+    public enum Gender {
         MALE,
         FEMALE,
         OTHER,
