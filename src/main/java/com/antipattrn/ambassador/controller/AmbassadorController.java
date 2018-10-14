@@ -3,6 +3,7 @@ package com.antipattrn.ambassador.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.antipattrn.ambassador.entity.Ambassador;
+import com.antipattrn.ambassador.entity.AmbassadorReview;
 import com.antipattrn.ambassador.repository.AmbassadorRepository;
 import com.antipattrn.ambassador.repository.AmbassadorSearchCriteria;
 import com.antipattrn.ambassador.repository.AmbassadorSearchSpecificaton;
+import com.antipattrn.ambassador.representation.Review;
 
 @RestController
 @RequestMapping("/api/ambassadors")
@@ -53,6 +56,15 @@ public class AmbassadorController {
     @DeleteMapping("/{ambassadorId}")
     public void delete(@PathVariable String ambassadorId) {
         ambassadorRepository.delete(ambassadorId);
+    }
+
+    @PostMapping("/{ambassadorId}/reviews")
+    @Transactional
+    public Ambassador createReview(@PathVariable String ambassadorId, @RequestBody Review review) {
+        Ambassador ambassador = ambassadorRepository.findOne(ambassadorId);
+        ambassador.getReviews().add(new AmbassadorReview(ambassador, review.getRating(), review.getReview()));
+
+        return ambassador;
     }
 
 }

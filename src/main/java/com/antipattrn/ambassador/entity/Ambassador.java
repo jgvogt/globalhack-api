@@ -38,7 +38,7 @@ public class Ambassador {
     }
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @Column(name = "FIRSTNAME")
@@ -58,7 +58,6 @@ public class Ambassador {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-
     @Column(name = "PHONE")
     private String phone;
 
@@ -75,19 +74,24 @@ public class Ambassador {
             inverseJoinColumns = { @JoinColumn(name = "tag_id") })
     private Set<Tag> tags = new HashSet<>();
 
-    @OneToMany(mappedBy="ambassador")
+    @OneToMany(mappedBy = "ambassador", cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     private Set<AmbassadorReview> reviews = new HashSet<>();
 
     public Ambassador() {
         //No Arg Constructor
     }
 
-    public Ambassador(String id, String firstName, String lastName, String postalCode, Gender gender, Status status, String phone, String email) {
+    public Ambassador(String id, String firstName, String lastName, String postalCode, Gender gender, Status status,
+            String phone, String email) {
         this(firstName, lastName, postalCode, gender, status, phone, email);
         this.id = id;
     }
 
-    public Ambassador(String firstName, String lastName, String postalCode, Gender gender, Status status, String phone, String email) {
+    public Ambassador(String firstName, String lastName, String postalCode, Gender gender, Status status, String phone,
+            String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.postalCode = postalCode;
@@ -137,13 +141,13 @@ public class Ambassador {
 
         BigDecimal rating = BigDecimal.ZERO;
 
-        if(reviews != null && !reviews.isEmpty()) {
+        if (reviews != null && !reviews.isEmpty()) {
 
             for (AmbassadorReview review : reviews) {
                 rating = rating.add(BigDecimal.valueOf(review.getRating()));
             }
 
-            rating = rating.divide(BigDecimal.valueOf(reviews.size())).setScale(1, RoundingMode.UP);
+            return rating.divide(BigDecimal.valueOf(reviews.size()), 1, RoundingMode.UP);
         }
 
         return rating;
