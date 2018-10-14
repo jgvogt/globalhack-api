@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.antipattrn.ambassador.entity.Ambassador;
 import com.antipattrn.ambassador.entity.AmbassadorReview;
+import com.antipattrn.ambassador.entity.Tag;
 import com.antipattrn.ambassador.repository.AmbassadorRepository;
 import com.antipattrn.ambassador.repository.AmbassadorSearchCriteria;
 import com.antipattrn.ambassador.repository.AmbassadorSearchSpecificaton;
+import com.antipattrn.ambassador.repository.TagRepository;
 import com.antipattrn.ambassador.representation.Review;
 
 @RestController
@@ -27,6 +29,8 @@ public class AmbassadorController {
 
     @Autowired
     private AmbassadorRepository ambassadorRepository;
+    @Autowired
+    private TagRepository tagRepository;
 
     @GetMapping
     public List<Ambassador> find(@RequestParam(required = false) List<String> tags,
@@ -44,8 +48,15 @@ public class AmbassadorController {
     }
 
     @PostMapping
-    public Ambassador create(@RequestBody Ambassador ambassador) {
-        return ambassadorRepository.save(new Ambassador(ambassador.getFirstName(), ambassador.getLastName(), ambassador.getPostalCode(), ambassador.getGender(), Ambassador.Status.ACTIVE, ambassador.getPhone(), ambassador.getEmail()));
+    public Ambassador create(@RequestBody Ambassador newAmbassador) {
+        Ambassador ambassador = new Ambassador(newAmbassador.getFirstName(), newAmbassador.getLastName(), newAmbassador.getPostalCode(),
+                newAmbassador.getGender(), Ambassador.Status.ACTIVE, newAmbassador.getPhone(), newAmbassador.getEmail());
+
+        for (Tag tag : newAmbassador.getTags()) {
+            ambassador.getTags().add(tagRepository.findOne(tag.getId()));
+        }
+
+        return ambassadorRepository.save(ambassador);
     }
 
     @PutMapping("/{ambassadorId}")
