@@ -35,7 +35,7 @@ public class AmbassadorSearchSpecificaton {
                 }
 
                 if (searchCriteria.getLastName() != null) {
-                    predicates.add(cb.equal(cb.lower(root.get("lastName")), "%" + searchCriteria.getLastName().toLowerCase() + "%"));
+                    predicates.add(cb.like(cb.lower(root.get("lastName")), "%" + searchCriteria.getLastName().toLowerCase() + "%"));
                 }
 
                 return cb.and(predicates.toArray(new Predicate[predicates.size()]));
